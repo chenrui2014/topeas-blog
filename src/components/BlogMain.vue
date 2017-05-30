@@ -1,29 +1,27 @@
 <template>
-    <main>
-        <div class="posts">
-            <postSummary v-for="post in posts"></postSummary>
-        </div>
-        <el-pagination
-                @size-change="handleSizeChange"
-                @current-change="handleCurrentChange"
-                :current-page="currentPage4"
-                :page-sizes="[100, 200, 300, 400]"
-                :page-size="100"
-                layout="total, sizes, prev, pager, next, jumper"
-                :total="400" class="pagination">
-        </el-pagination>
-    </main>
+  <main>
+    <postSummary v-for="post in posts" :key="post" :post="post"></postSummary>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage4"
+      :page-sizes="[100, 200, 300, 400]"
+      :page-size="100"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="400" class="pagination">
+    </el-pagination>
+  </main>
 </template>
 
 <script>
   import post from './Post.vue'
   import postSummary from './PostSummary.vue'
+  import { mapGetters } from 'vuex'
   //  import foot from './Footer.vue'
   export default{
     name: 'blogMain',
     data(){
       return {
-        posts: [1, 2, 3, 4, 5, 6, 7, 8],
         currentPage1: 5,
         currentPage2: 5,
         currentPage3: 5,
@@ -34,6 +32,11 @@
     components: {
       post,
       postSummary,
+    },
+    computed: {
+      ...mapGetters({
+        posts: 'GET_ITEMS'
+      })
     },
     methods: {
       handleSizeChange(val) {
@@ -51,10 +54,10 @@
 
 
 <style lang="less" scoped>
-    main {
-        padding-left: 400px;
-        padding-top: 30px;
-        padding-bottom: 80px;
-    }
+  main {
+    max-width: 1040px;
+    margin-left: 310px;
+    padding-bottom: 45px;
+  }
 
 </style>

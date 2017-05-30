@@ -1,15 +1,16 @@
 <template>
-    <div class="footer">
-        <p>© 2017 -  ToPeas
-            <el-button type="info" @click.native="start">开始</el-button>
-        </p>
-        <p>Powered by Vue2
-            <el-button type="info" @click.native=" finish">结束</el-button>
-        </p>
-    </div>
+  <div class="footer">
+    <p @click="start">© 2017 -  ToPeas
+      <!--<el-button type="info" @click.native="start">开始</el-button>-->
+    </p>
+    <p @click="end">Powered by Vue2
+      <!--<el-button type="info" @click.native="end">结束</el-button>-->
+    </p>
+  </div>
 </template>
 
 <script>
+  import api from '../api/axios'
   export default {
     name: 'footer',
     data() {
@@ -37,21 +38,23 @@
   };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='less' scoped>
-    .footer {
-        text-align: center;
-        position: fixed;
-        height: 60px;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        padding-left: 400px;
-        background-color: #12b0e6;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+  .footer {
+    text-align: center;
+    position: fixed;
+    height: 45px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 280px;
+    background-color: #12b0e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    p {
+      transform: scale(.8);
     }
+  }
 </style>
 

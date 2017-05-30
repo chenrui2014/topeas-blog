@@ -1,13 +1,19 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Index from '@/pages/Index';
-import Post from '@/components/Post';
-import List from '@/components/List';
-import About from '@/components/About';
+import Vue from 'vue'
+import Router from 'vue-router'
+import Index from '@/pages/Index'
+import Post from '@/components/Post'
+import List from '@/components/List'
+import About from '@/components/About'
 
-Vue.use(Router);
+Vue.use(Router)
+
+const scrollBehavior = to => {
+  const position = {}
+
+}
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -15,7 +21,7 @@ export default new Router({
       component: Index,
     },
     {
-      path: '/post',
+      path: '/post/:id',
       name: 'post',
       component: Post,
     },
@@ -31,4 +37,4 @@ export default new Router({
       component: About,
     },
   ],
-});
+})

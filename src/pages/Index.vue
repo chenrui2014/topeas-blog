@@ -1,16 +1,21 @@
 <template>
-    <div class="index">
-        <blog-main></blog-main>
-    </div>
+  <div class="index">
+    <blog-main></blog-main>
+  </div>
 </template>
 
 <script>
-  import panel from '../components/Panel.vue'
+  import panel from '../components/SiderBar.vue'
   import post from '../components/Post.vue'
   import postSummary from '../components/PostSummary.vue'
   import foot from '../components/Footer.vue'
   import blogMain from '../components/BlogMain.vue'
+  import { mapGetters } from 'vuex'
 
+  const fetchItems = async (store, config = {page: 1}) => {
+    let {page} = config
+    return store.dispatch('FETCH_ITEMS', {page})
+  }
 
   export default {
     name: 'index',
@@ -31,10 +36,14 @@
       postSummary,
       blogMain,
     },
+    mounted() {
+//      console.log(this)
+      fetchItems(this.$store, {page: 1})
+    },
     computed: {
-      md(){
-        return marked(this.content)
-      }
+      ...mapGetters({
+        item: 'GET_ITEMS',
+      })
     },
     methods: {
       send(){
@@ -49,15 +58,3 @@
     }
   };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang='less' scoped>
-    /*.posts {*/
-    /*padding-left: 400px;*/
-    /*padding-bottom: 80px;*/
-    /*}*/
-    /*.pagination{*/
-    /*padding-bottom: 80px;*/
-    /*padding-left: 400px;*/
-    /*}*/
-</style>

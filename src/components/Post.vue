@@ -1,14 +1,22 @@
 <template>
-    <div class="post">
-        <div class="psot-meta"><h1 class="title">{{title}}</h1></div>
-        <div class="entry-content" v-html="content"></div>
-        <div class="summary">本文发表于{{date}}，添加到{{category}}下，并被添加了以下的标签</div>
+  <div class="post">
+    <div class="post-meta">
+      <h1 class="title">{{post.title}}</h1>
     </div>
+    <div class="entry-content" v-html="post.content"></div>
+    <div class="summary">本文发表于{{post.create_at}}，添加到{{post.tab}}下</div>
+  </div>
 </template>
 
 <script>
   import content from '../mock/db'
+  import { mapGetters } from 'vuex'
   import '../style/markdown.css'
+
+  const fetchItem = async (store, {id}) => {
+    return await store.dispatch('FETCH_ITEM', {id})
+  }
+
   export default {
     name: 'post',
     data() {
@@ -21,27 +29,44 @@
       }
     },
     components: {},
-    computed: {
-      md(){
-        return marked(this.content)
-      }
+    created(){
+      console.log(this.$store.state.route.params)
+      const {id} = this.$store.state.route.params
+      console.log(id)
+      fetchItem(this.$store, {id})
     },
+    computed: {
+      ...mapGetters({
+        post: 'GET_ITEM'
+      })
+    },
+//    mounted(){
+//      console.log(this.$store.state.route.params.id)
+//    },
     methods: {}
   };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='less'>
-    @import "../style/highlight-theme.css";
-    @import "../style/markdown.css";
+  @import "../style/highlight-theme.css";
+  @import "../style/markdown.css";
 
-    .post {
-        padding-left: 400px;
-        padding-bottom: 80px;
+  .post {
+    margin-left: 310px;
+    margin-top: 40px;
+    padding-bottom: 80px;
+    h1{
+      font-size:36px;
     }
+  }
 
-    .summary {
-        font-size: 18px;
-        margin-top: 40px;
-    }
+  .summary {
+    font-size: 18px;
+    margin-top: 40px;
+  }
+
+  .entry-content {
+    margin-top: 30px;
+  }
 </style>
