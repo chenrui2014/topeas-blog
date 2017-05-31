@@ -1,14 +1,14 @@
 <template>
   <div class="post-summary">
     <div class="meta">
-      <span class="create-date">{{post.create_at}}</span>
+      <!--<p>{{ new Date('2017-05-30') | timeAgo }}</p>-->
+      <span class="create-date">{{post.create_at | date}}</span>
     </div>
     <h1 class="title">
       <router-link :to="'/post/' + post.id">{{post.title}}</router-link>
-      <el-tag type="gray" v-for="tag in post.tab">{{tag}}</el-tag>
+      <!--<el-tag type="gray" v-for="tag in post.tab">{{tag}}</el-tag>-->
     </h1>
-    <div class="entry-content" v-html="post.content">
-    </div>
+    <article class="entry-content" v-html="post.content"></article>
     <router-link :to="'/post/' + post.id">查看更多>></router-link>
   </div>
 </template>
@@ -38,36 +38,3 @@
 
   };
 </script>
-
-<style lang="less">
-  @import "../style/highlight-theme.css";
-  @import "../style/markdown.css";
-
-  .post-summary {
-    position: relative;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px dotted #5c6370;
-
-  }
-
-  .entry-content {
-    margin-top: 14px;
-  }
-
-  .meta {
-    position: absolute;
-    top: 12px;
-    right: 24px;
-  }
-
-  h1 {
-    vertical-align: middle;
-  }
-
-  .categories {
-    font-size: 14px;
-    padding: 8px 14px;
-  }
-
-</style>

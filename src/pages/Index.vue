@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import panel from '../components/SiderBar.vue'
+  import panel from '../components/SideBar.vue'
   import post from '../components/Post.vue'
   import postSummary from '../components/PostSummary.vue'
   import foot from '../components/Footer.vue'

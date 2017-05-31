@@ -37,24 +37,3 @@
     }
   };
 </script>
-
-<style lang='less' scoped>
-  .footer {
-    text-align: center;
-    position: fixed;
-    height: 45px;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding-left: 280px;
-    background-color: #12b0e6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    p {
-      transform: scale(.8);
-    }
-  }
-</style>
-

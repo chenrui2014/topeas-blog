@@ -7,12 +7,29 @@ import About from '@/components/About'
 
 Vue.use(Router)
 
-const scrollBehavior = to => {
-  const position = {}
+// const scrollBehavior = to => {
+//   const position = {}
+//
+// }
+
+const scrollBehavior = (to, from, savedPosition) => {
+  if (to.hash) {
+    return {
+      selector: to.hash
+    }
+  }
+  if (savedPosition) {
+    return savedPosition
+  } else {
+    return {x: 0, y: 0}
+  }
+}
+
+function beforeRouterEnter (to, from) {
 
 }
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -38,3 +55,9 @@ export default new Router({
     },
   ],
 })
+router.beforeEach(function (to, from, next) {
+  scrollBehavior(...arguments)
+  next()
+})
+
+export default router

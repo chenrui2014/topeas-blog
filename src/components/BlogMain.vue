@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <section class="main">
     <postSummary v-for="post in posts" :key="post" :post="post"></postSummary>
     <el-pagination
       @size-change="handleSizeChange"
@@ -10,7 +10,7 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total="400" class="pagination">
     </el-pagination>
-  </main>
+  </section>
 </template>
 
 <script>
@@ -51,13 +51,3 @@
 
 
 </script>
-
-
-<style lang="less" scoped>
-  main {
-    max-width: 1040px;
-    margin-left: 310px;
-    padding-bottom: 45px;
-  }
-
-</style>

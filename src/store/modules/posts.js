@@ -16,11 +16,7 @@ const actions = {
     commit('SET_ITEMS', {blogs, page})
   },
   async ['FETCH_ITEM']({commit, state}, payload){
-    console.log(payload)
     const {id} = payload
-    console.log(id)
-    // console.log(id)
-    // console.log('id')
     const post = await api.get(`/topic/${id}`).then(res => res.data)
     commit('SET_ITEM', {post})
   },

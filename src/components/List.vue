@@ -49,23 +49,3 @@
 
 </script>
 
-
-<style lang="less" scoped>
-    section {
-        padding-left: 400px;
-
-        h1 {
-            font-size: 32px;
-            margin: 45px auto;
-        }
-        li {
-            margin-bottom: 8px;
-            list-style: circle;
-        }
-        span {
-            font-size: 12px;
-            padding-left: 24px;
-        }
-    }
-
-</style>
