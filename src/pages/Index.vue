@@ -11,11 +11,33 @@
   import foot from '../components/Footer.vue'
   import blogMain from '../components/BlogMain.vue'
   import { mapGetters } from 'vuex'
+  import { deepClone } from '../utils/utils'
 
   const fetchItems = async (store, config = {page: 1}) => {
     let {page} = config
     return store.dispatch('FETCH_ITEMS', {page})
   }
+
+  //  //  console.log(deepClone)
+  //
+  //  var a = {
+  //    a: 2,
+  //    b: {
+  //      c: 1,
+  //      d: 3,
+  //      e: {
+  //        g: 4,
+  //        f: 5,
+  //      }
+  //    }
+  //
+  //  }
+  //
+  //  let b = deepClone(a)
+  //  a.b.c = 2
+  //  console.log(JSON.stringify(a))
+  ////  a.b.c = 2
+  //  console.log(JSON.stringify(b))
 
   export default {
     name: 'index',
