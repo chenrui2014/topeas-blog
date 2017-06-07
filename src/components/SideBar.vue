@@ -22,25 +22,25 @@
 
     <ul class="contact">
       <li>
-        <router-link to="/post" target="_blank">
+        <a href="https://www.github.com/topeas" target="_blank">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-social-facebook"></use>
           </svg>
-        </router-link>
+        </a>
       </li>
       <li>
-        <router-link to="/post" target="_blank">
+        <a href="https://www.github.com/topeas" target="_blank">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-social-github"></use>
           </svg>
-        </router-link>
+        </a>
       </li>
       <li>
-        <router-link to="/post" target="_blank">
+        <a href="https://www.github.com/topeas" target="_blank">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-social-qq"></use>
           </svg>
-        </router-link>
+        </a>
       </li>
     </ul>
   </div>
