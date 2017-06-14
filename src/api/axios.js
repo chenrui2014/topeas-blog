@@ -4,7 +4,7 @@
 import axios from 'axios'
 // import config from 'config'
 
-axios.defaults.baseURL = 'https://cnodejs.org/api/v1'
+axios.defaults.baseURL = 'http://localhost:10001/api/frontend'
 
 const get = (url, payload) => {
   return axios({
