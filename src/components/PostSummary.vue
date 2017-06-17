@@ -1,12 +1,10 @@
 <template>
   <div class="post-summary">
     <div class="meta">
-      <!--<p>{{ new Date('2017-05-30') | timeAgo }}</p>-->
       <span class="create-date">{{post.createTime | date}}</span>
     </div>
     <h1 class="title">
       <router-link :to="'/post/' + post._id">{{post.title}}</router-link>
-      <!--<el-tag type="gray" v-for="tag in post.tab">{{tag}}</el-tag>-->
     </h1>
     <article class="entry-content" v-html="post.content"></article>
     <router-link :to="'/post/' + post._id">查看更多>></router-link>

@@ -4,7 +4,7 @@
       <img src="../assets/imgs/avator.jpg" class="avatar">
     </router-link>
     <h2>ToPeas的博客</h2>
-    <h4>{{msg}}</h4>
+    <h4>一个没有牌面的前端</h4>
     <ul class="option">
       <li>
         <router-link to="/">首页</router-link>
@@ -21,13 +21,13 @@
     </ul>
 
     <ul class="contact">
-      <li>
-        <a href="https://www.github.com/topeas" target="_blank">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-social-facebook"></use>
-          </svg>
-        </a>
-      </li>
+      <!--<li>-->
+      <!--<a href="https://www.github.com/topeas" target="_blank">-->
+      <!--<svg class="icon" aria-hidden="true">-->
+      <!--<use xlink:href="#icon-social-facebook"></use>-->
+      <!--</svg>-->
+      <!--</a>-->
+      <!--</li>-->
       <li>
         <a href="https://www.github.com/topeas" target="_blank">
           <svg class="icon" aria-hidden="true">
@@ -35,13 +35,13 @@
           </svg>
         </a>
       </li>
-      <li>
-        <a href="https://www.github.com/topeas" target="_blank">
-          <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-social-qq"></use>
-          </svg>
-        </a>
-      </li>
+      <!--<li>-->
+      <!--<a href="https://www.github.com/topeas" target="_blank">-->
+      <!--<svg class="icon" aria-hidden="true">-->
+      <!--<use xlink:href="#icon-social-qq"></use>-->
+      <!--</svg>-->
+      <!--</a>-->
+      <!--</li>-->
     </ul>
   </div>
 </template>
@@ -52,11 +52,6 @@
   import '../assets/font/iconfont'
   export default {
     name: 'sideBar',
-    data() {
-      return {
-        msg: '一个没有牌面的前端小老弟',
-      };
-    },
     computed: {
       md(){
         return marked(this.content)

@@ -1,20 +1,26 @@
 <template>
+
   <section class="post">
-    <div class="post-meta">
-      <h1 class="title">{{post.title}}</h1>
+    <div v-if="post">
+      <div class="post-meta">
+        <h1 class="title">{{post.title}}</h1>
+      </div>
+      <article class="entry-content" v-html="post.content"></article>
+      <div class="summary">
+        本文发表于{{post.createTime }}，更新于{{post.updateTime}},添加到{{post.category && post.category.categoryName }}下
+      </div>
     </div>
-    <article class="entry-content" v-html="post.content"></article>
-    <div class="summary">本文发表于{{post.create_at}}，添加到{{post.tab}}下</div>
+    <div v-else>文章还没有加载完</div>
   </section>
 </template>
 
 <script>
-  import content from '../mock/db'
   import { mapGetters } from 'vuex'
   import '../style/markdown.less'
 
-  const fetchItem = async (store, {id}) => {
-    return await store.dispatch('FETCH_ITEM', {id})
+  const fetchItem = async (store, { id }) => {
+//    console.log('---', id)
+    return await store.dispatch('FETCH_ITEM', { id })
   }
 
   export default {
@@ -25,15 +31,13 @@
         content: content.content,
         date: '2017-05-14',
         category: '前端开发',
-        tag: [1, 2, 23, 33, 3, 3,]
+        tag: [ 1, 2, 23, 33, 3, 3, ]
       }
     },
     components: {},
     created(){
-      console.log(this.$store.state.route.params)
-      const {id} = this.$store.state.route.params
-      console.log(id)
-      fetchItem(this.$store, {id})
+      const id = this.$store.state.route.params.id
+      fetchItem(this.$store, { id })
     },
     computed: {
       ...mapGetters({

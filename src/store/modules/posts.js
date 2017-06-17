@@ -6,15 +6,20 @@ import api from '../../api/axios'
 
 const state = {
   post: {},
-  lists: {}
+  lists: []
 }
 
 const actions = {
   async ['FETCH_ITEMS']({ commit, state }, payload){
-    const { page } = payload
-    const blogs = await api.get('/posts', { page, }).then(res => res.data)
-    console.log('', blogs)
-    commit('SET_ITEMS', { blogs, page })
+    const page = payload.page || 1
+    const limit = payload.limit || 15
+    const type = payload.type || ''
+    const posts = await api.get('/posts', {
+      page, limit, type
+    }).then(res => res.data)
+    // console.log('-------',)
+    // console.log('', posts)
+    commit('SET_ITEMS', { posts, page })
   },
   async ['FETCH_ITEM']({ commit, state }, payload){
     const { id } = payload
@@ -25,11 +30,13 @@ const actions = {
 
 const mutations = {
   ['SET_ITEMS'](state, payload){
-    let { page, blogs } = payload
+    let { page, posts } = payload
+    // console.log('', page)
     if (page === 1) {
-      state.lists = blogs
+      state.lists = posts.lists
     } else {
-      state.lists.concat(blogs)
+      // console.log('', posts.lists)
+      state.lists.concat(posts.lists)
     }
   },
   ['SET_ITEM'](state, payload){
