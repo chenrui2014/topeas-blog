@@ -17,8 +17,6 @@ const actions = {
     const posts = await api.get('/posts', {
       page, limit, type
     }).then(res => res.data)
-    // console.log('-------',)
-    // console.log('', posts)
     commit('SET_ITEMS', { posts, page })
   },
   async ['FETCH_ITEM']({ commit, state }, payload){

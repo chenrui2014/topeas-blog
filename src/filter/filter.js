@@ -2,10 +2,10 @@
  * Created by topeas on 2017/5/30.
  */
 
-// import moment from 'moment'
+import moment from 'moment'
 
-export const date = (date) => {
-  return date.split('T')[0]
+export const date = (str) => {
+  return moment(str).format('YYYY-MM-DD HH:mm')
 }
 
 export const timeAgo = (time) => {

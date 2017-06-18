@@ -5,9 +5,15 @@
       <div class="post-meta">
         <h1 class="title">{{post.title}}</h1>
       </div>
-      <article class="entry-content" v-html="post.content"></article>
+      <article v-if="post" class="entry-content" v-html="post.content"></article>
       <div class="summary">
-        本文发表于{{post.createTime }}，更新于{{post.updateTime}},添加到{{post.category && post.category.categoryName }}下
+        本文发表于
+        <span class="create-time">{{post.createTime | date }}</span>
+        更新于
+        <span class="update-time">{{post.updateTime | date}}</span>
+        添加到『
+        <span class="category">{{ post.category && post.category.categoryName }}</span>
+        』下
       </div>
     </div>
     <div v-else>文章还没有加载完</div>
@@ -28,10 +34,9 @@
     data() {
       return {
         title: 'vue2服务端渲染：按需分块加载的首屏优化策略',
-        content: content.content,
         date: '2017-05-14',
         category: '前端开发',
-        tag: [ 1, 2, 23, 33, 3, 3, ]
+        tag: [1, 2, 23, 33, 3, 3,]
       }
     },
     components: {},

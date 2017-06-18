@@ -1,10 +1,8 @@
 <template>
   <div class="footer">
     <p @click="start">© 2017 -  ToPeas
-      <!--<el-button type="info" @click.native="start">开始</el-button>-->
     </p>
     <p @click="end">Powered by Vue2
-      <!--<el-button type="info" @click.native="end">结束</el-button>-->
     </p>
   </div>
 </template>

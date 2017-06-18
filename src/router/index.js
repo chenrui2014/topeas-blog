@@ -4,6 +4,9 @@ import Index from '@/pages/Index'
 import Post from '@/components/Post'
 import List from '@/components/List'
 import About from '@/components/About'
+// import Tags from '@/components/Tags'
+import Categories from '@/components/Categories'
+import Category from '@/components/Category'
 
 Vue.use(Router)
 
@@ -21,7 +24,7 @@ const scrollBehavior = (to, from, savedPosition) => {
   if (savedPosition) {
     return savedPosition
   } else {
-    return {x: 0, y: 0}
+    return { x: 0, y: 0 }
   }
 }
 
@@ -42,7 +45,16 @@ const router = new Router({
       name: 'post',
       component: Post,
     },
-
+    {
+      path: '/categories',
+      name: 'Categories',
+      component: Categories,
+    },
+    {
+      path: '/category/:id',
+      name: 'Category',
+      component: Category,
+    },
     {
       path: '/lists',
       name: 'list',
